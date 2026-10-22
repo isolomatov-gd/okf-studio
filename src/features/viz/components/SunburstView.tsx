@@ -72,12 +72,12 @@ export function SunburstView(props: HierarchyVizProps) {
           2 * Math.sqrt(Math.max(0, outerRadius * outerRadius - midR * midR));
         const fitTan = fitLabel(
           d.data.name,
-          Math.min(arcSpan * 0.85, chordCap),
-          thick * 0.85,
+          Math.min(arcSpan * 0.95, chordCap),
+          thick * 0.95,
           { maxFont: 13 },
         );
         // Radial: ring thickness is the line length; lines stack along the arc.
-        const fitRad = fitLabel(d.data.name, thick * 0.85, arcSpan * 0.8, {
+        const fitRad = fitLabel(d.data.name, thick * 0.95, arcSpan * 0.9, {
           maxFont: 13,
         });
 
