@@ -7,6 +7,14 @@
 // and more names appear.
 
 import type { VizColors } from "@/features/viz/nivoTheme.ts";
+import type { VizLabelSize } from "@/shared/types.ts";
+
+/** Font multiplier per label-size setting. */
+export const LABEL_SCALE: Record<VizLabelSize, number> = {
+  smaller: 0.8,
+  default: 1,
+  larger: 1.3,
+};
 
 /** Chart label font size (matches nivoTheme's labels.text). */
 export const LABEL_FONT_PX = 11;
@@ -46,10 +54,17 @@ export function fitLabel(
   text: string,
   w: number,
   h: number,
-  opts?: { maxFont?: number; minFont?: number; maxLines?: number },
+  opts?: {
+    maxFont?: number;
+    minFont?: number;
+    maxLines?: number;
+    /** Multiplies the font range, from LABEL_SCALE. */
+    scale?: number;
+  },
 ): FittedLabel | null {
-  const maxFont = opts?.maxFont ?? 14;
-  const minFont = opts?.minFont ?? 5;
+  const scale = opts?.scale ?? 1;
+  const maxFont = Math.round((opts?.maxFont ?? 14) * scale);
+  const minFont = Math.round((opts?.minFont ?? 5) * scale);
   const maxLines = opts?.maxLines ?? 4;
   for (let fontSize = maxFont; fontSize >= minFont; fontSize--) {
     const maxChars = Math.floor(w / (fontSize * AVG_CHAR_EM));

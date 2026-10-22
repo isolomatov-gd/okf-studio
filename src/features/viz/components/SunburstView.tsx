@@ -74,11 +74,12 @@ export function SunburstView(props: HierarchyVizProps) {
           d.data.name,
           Math.min(arcSpan * 0.95, chordCap),
           thick * 0.95,
-          { maxFont: 13 },
+          { maxFont: 13, scale: props.labelScale },
         );
         // Radial: ring thickness is the line length; lines stack along the arc.
         const fitRad = fitLabel(d.data.name, thick * 0.95, arcSpan * 0.9, {
           maxFont: 13,
+          scale: props.labelScale,
         });
 
         const useTan =

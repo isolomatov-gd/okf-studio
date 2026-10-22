@@ -47,7 +47,9 @@ export function TreemapView(props: HierarchyVizProps) {
     <g>
       {nodes.map((n) => {
         if (!n.isLeaf || props.dimmedIds.has(n.data.id)) return null;
-        const fit = fitLabel(n.data.name, n.width - 4, n.height - 4);
+        const fit = fitLabel(n.data.name, n.width - 4, n.height - 4, {
+          scale: props.labelScale,
+        });
         if (!fit) return null;
         return (
           <VizSvgLabel

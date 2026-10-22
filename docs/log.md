@@ -2,7 +2,7 @@
 
 ## 2026-10-21
 
-* **Update**: The treemap, sunburst, and circle-packing views label more shapes. The [label model](features/viz-views.md#labels) previously needed a 10px font and three lines, so bundles with long slug-style names (`use-restaurant-platform-api Flag`) left many tiles blank. The size range is now 5 to 14px with up to four lines, names also wrap after `-`, `_`, `/`, and `.`, an oversized single token is split instead of discarding the label, and the label box inside each tile, arc, and circle is looser. The tradeoff is smaller text and labels closer to their shape's edge. A shape that still cannot hold its name stays unlabeled, and the tooltip carries it.
+* **Update**: The treemap, sunburst, and circle-packing views label more shapes. The [label model](features/viz-views.md#labels) previously needed a 10px font and three lines, so bundles with long slug-style names (`use-restaurant-platform-api Flag`) left many tiles blank. The size range is now 5 to 14px with up to four lines, names also wrap after `-`, `_`, `/`, and `.`, an oversized single token is split instead of discarding the label, and the label box inside each tile, arc, and circle is looser. A **Chart label size** setting under Appearance (Smaller, Default, Larger) scales that font range for readers who prefer fewer, larger labels or more, smaller ones. The tradeoff is smaller text and labels closer to their shape's edge. A shape that still cannot hold its name stays unlabeled, and the tooltip carries it.
 
 ## 2026-08-21
 

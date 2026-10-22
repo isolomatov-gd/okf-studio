@@ -17,3 +17,17 @@ describe("fitLabel wrapping", () => {
     expect(fitLabel("hello world", 200, 40)!.lines).toEqual(["hello world"]);
   });
 });
+
+describe("fitLabel scale", () => {
+  it("a smaller scale labels a shape a larger scale leaves blank", () => {
+    const small = fitLabel("use-restaurant-platform-api", 40, 18, { scale: 0.8 });
+    const large = fitLabel("use-restaurant-platform-api", 40, 18, { scale: 1.3 });
+    expect(small).not.toBeNull();
+    expect(large).toBeNull();
+  });
+  it("a larger scale raises the font ceiling", () => {
+    const base = fitLabel("Hi", 400, 400)!;
+    const large = fitLabel("Hi", 400, 400, { scale: 1.3 })!;
+    expect(large.fontSize).toBeGreaterThan(base.fontSize);
+  });
+});
